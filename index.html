@@ -5,15 +5,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Happy Birthday 💖</title>
 
+<!-- Poppins Font -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
 <style>
+
 body {
     margin: 0;
-    font-family: 'Segoe UI', sans-serif;
+    font-family: 'Poppins', sans-serif;
     background: linear-gradient(135deg, #ffd1dc, #ffe4ec);
     overflow-x: hidden;
 }
 
-/* Floating hearts background */
+/* Floating hearts */
 .heart {
     position: fixed;
     bottom: -20px;
@@ -53,6 +57,12 @@ button {
     box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 }
 
+/* Headings */
+h1 {
+    font-weight: 600;
+    color: #b30059;
+}
+
 /* Typewriter */
 #typewriter {
     font-size: 22px;
@@ -74,10 +84,10 @@ button {
     50% { transform: translateY(-10px); }
 }
 
-/* Photo slideshow */
+/* Slideshow */
 .slideshow {
-    width: 250px;
-    height: 250px;
+    width: 260px;
+    height: 260px;
     border-radius: 20px;
     overflow: hidden;
     margin-top: 20px;
@@ -88,22 +98,44 @@ button {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    animation: fade 9s infinite;
 }
 
-@keyframes fade {
-    0% {opacity: 1;}
-    33% {opacity: 0;}
-    66% {opacity: 1;}
-    100% {opacity: 1;}
-}
-
-/* Final message */
+/* FINAL LETTER (AESTHETIC UPGRADE) */
 .final {
+    font-family: "Times New Roman", Times, serif;
     font-size: 20px;
-    color: #a1004f;
-    padding: 20px;
+    color: #7a003c;
+    padding: 30px;
+    max-width: 800px;
+    background: rgba(255,255,255,0.6);
+    border-radius: 20px;
+    box-shadow: 0 0 25px rgba(255,105,180,0.3);
+    line-height: 1.8;
+    backdrop-filter: blur(5px);
+    animation: fadeIn 2s ease-in-out;
+    text-align: center;
 }
+
+/* Fade in animation */
+@keyframes fadeIn {
+    from {opacity: 0; transform: translateY(20px);}
+    to {opacity: 1; transform: translateY(0);}
+}
+
+/* Signature effect */
+.signature {
+    margin-top: 20px;
+    font-style: italic;
+    font-size: 18px;
+    opacity: 0;
+    animation: sig 3s forwards;
+    animation-delay: 3s;
+}
+
+@keyframes sig {
+    to {opacity: 1;}
+}
+
 </style>
 </head>
 
@@ -111,7 +143,7 @@ button {
 
 <!-- Floating hearts -->
 <script>
-for(let i=0;i<20;i++){
+for(let i=0;i<25;i++){
     let heart=document.createElement("div");
     heart.className="heart";
     heart.innerHTML="💖";
@@ -121,13 +153,13 @@ for(let i=0;i<20;i++){
 }
 </script>
 
-<!-- OPENING SCREEN -->
+<!-- OPENING -->
 <div id="welcome" class="screen">
-    <h1>🎁 A Special Surprise For You 💖</h1>
+    <h1>🎁Your wish is here! 💖</h1>
     <button onclick="start()">Open Your Gift</button>
 </div>
 
-<!-- MAIN SCREEN -->
+<!-- MAIN -->
 <div id="main" class="screen hidden">
 
     <h1>🎉 Happy Birthday 🎉</h1>
@@ -136,7 +168,6 @@ for(let i=0;i<20;i++){
 
     <div class="cake">🎂</div>
 
-    <!-- PHOTO SLIDESHOW -->
     <div class="slideshow">
         <img src="https://images.unsplash.com/photo-1527529482837-4698179dc6ce">
     </div>
@@ -146,30 +177,38 @@ for(let i=0;i<20;i++){
     <audio id="music" loop>
         <source src="birthday-song.mp3" type="audio/mpeg">
     </audio>
+
 </div>
 
-<!-- FINAL SCREEN -->
+<!-- FINAL LETTER -->
 <div id="final" class="screen hidden">
+
     <div class="final">
-         Dear Zaakia Sultan Butt💖<br><br>
 
-        To the most beautiful soul I call my "achii dost"! May all the happiness of this world find you even in the darkest of storms, and Allah's mercy be with you whatever situation you may be in!
+         Dear Zaakia Sultan Butt 💖<br><br>
 
-تمہارا نصیب اتنا پیارا ہو کہ آسمان رشک کرے، اور وہ تمام دعائیں قبول ہوں جن کے بارے میں تمہارے علاوہ کوئی نہیں جانتا۔ جتنا خلوص تمہارے دل میں ہے، تمہیں اس کا بہترین اجر ملے، اور تم اپنے وجود کے ہر ذرّے پر ہمیشہ فخر محسوس کرو۔
+        To the most beautiful soul I call my "achii dost"! May all the happiness of this world find you even in the darkest of storms, and Allah's mercy be with you whatever situation you may be in!<br><br>
+        
 
-دونوں جہانوں کی کامیابیاں، خوشیاں اور سکون تمہیں عطا ہوں، اور تمہاری یادداشت کے 
- کسی کونے میں ہمیشہ میرا نام بھی قائم رہے۔
-آمین
+        تمہارا نصیب اتنا پیارا ہو کہ آسمان رشک کرے، اور وہ تمام دعائیں قبول ہوں جن کے بارے میں تمہارے علاوہ کوئی نہیں جانتا۔ جتنا خلوص تمہارے دل میں ہے، تمہیں اس کا بہترین اجر ملے، اور تم اپنے وجود کے ہر ذرّے پر ہمیشہ فخر محسوس کرو۔<br><br>
 
-!تمہاری دوستی، خلوص، اور مجھے سمجھنے اور کبھی نہ چھوڑ کر جانے کے لیے بہت شکریہ
+        دونوں جہانوں کی کامیابیاں، خوشیاں اور سکون تمہیں عطا ہوں ❤️<br><br>
 
-You know what I love about you the most? Your originality! Fake nahi ho tum, hnn bewafaa, mannerless, aur 2 no. zaroor ho aur woh toh hamesha rho gi..
-And I actually love that :).. Hnn bss thorii zyadaa bewafaiii qaabil-e-bardasht nahi hoti, uss k liye tm bhaar mn hi achii ho!
-Hr maheenay baad badal jaati ho, but ek cheez jisska mujhe yaqeen hai k nahi badlay gi, woh hai hmari dostiii!! 
-And yes I love you for that! And I feel blessed to have a friend like you :)!! Khushhh rho hameshaaa, aabaad rho!!
+        You know what I love about you the most? Your originality! Fake nahi ho tum<br>
+
+        hnn bewafaa, mannerless, aur 2 no. zaroor ho aur woh toh hamesha rho gi.. And I actually love that :)..
+        Hnn bss thorii zyadaa bewafaiii qaabil-e-bardasht nahi hoti, uss k liye tm bhaar mn hi achii ho!
+        Hr maheenay baad badal jaati ho, but ek cheez jisska mujhe yaqeen hai k nahi badlay gi, woh hai hmari dostiii!!
+        and yes I love you for that! And I feel blessed to have a friend like you :)!! Khushhh rho hameshaaa, aabaad rho!!<br><br>
 
         Happy Birthday once again 🎂🎉
+
+        <div class="signature">
+            — With love, always 💕
+        </div>
+
     </div>
+
 </div>
 
 <script>
@@ -184,7 +223,7 @@ function start(){
     music.play().catch(()=>{});
 }
 
-let text="Today is all about YOU 💖 A day filled with love, happiness, and beautiful memories waiting for you ✨";
+let text="Happy 22 years of existence, Ms Zaakiaaaa ✨";
 let i=0;
 
 function typeWriter(){
