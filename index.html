@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday!</title>
+
+<style>
+body{
+    margin:0;
+    font-family:'Segoe UI',sans-serif;
+    background:linear-gradient(135deg,#ffb6c1,#ffd700);
+    overflow:hidden;
+    text-align:center;
+}
+
+.screen{
+    position:absolute;
+    width:100%;
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+}
+
+button{
+    padding:12px 24px;
+    border:none;
+    border-radius:30px;
+    background:#ff4081;
+    color:white;
+    font-size:18px;
+    cursor:pointer;
+}
+
+.hidden{
+    display:none;
+}
+
+#typewriter{
+    font-size:28px;
+    color:white;
+    width:80%;
+    min-height:100px;
+}
+
+.cake{
+    margin-top:20px;
+    position:relative;
+}
+
+.candle{
+    width:10px;
+    height:50px;
+    background:white;
+    display:inline-block;
+    margin:5px;
+    position:relative;
+}
+
+.flame{
+    width:12px;
+    height:18px;
+    background:orange;
+    border-radius:50%;
+    position:absolute;
+    top:-18px;
+    left:-1px;
+}
+
+.final-message{
+    color:white;
+    font-size:24px;
+    padding:20px;
+}
+</style>
+</head>
+
+<body>
+
+<div id="welcome" class="screen">
+    <h1>🎁 A Special Surprise For You 🎁</h1>
+    <button onclick="start()">Open Your Gift</button>
+</div>
+
+<div id="main" class="screen hidden">
+
+    <h1>🎉 Happy Birthday! 🎉</h1>
+
+    <div id="typewriter"></div>
+
+    <div class="cake">
+        🎂
+        <br>
+        <div class="candle" onclick="blow(this)">
+            <div class="flame"></div>
+        </div>
+
+        <div class="candle" onclick="blow(this)">
+            <div class="flame"></div>
+        </div>
+
+        <div class="candle" onclick="blow(this)">
+            <div class="flame"></div>
+        </div>
+    </div>
+
+    <br>
+    <button onclick="showFinal()">Blow All Candles</button>
+
+</div>
+
+<div id="final" class="screen hidden">
+    <div class="final-message">
+        Dearest Zaakia Sultan Butt, ❤️<br><br>
+
+        To the most beautiful soul I call my "achii dost"! May all the happiness of this world find you even in the darkest of storms, and Allah's mercy be with you whatever situation you may be in!
+تمہارا نصیب اتنا پیارا ہو کہ آسمان رشک کرے، اور وہ تمام دعائیں قبول ہوں جن کے بارے میں تمہارے علاوہ کوئی نہیں جانتا۔ جتنا خلوص تمہارے دل میں ہے، تمہیں اس کا بہترین اجر ملے، اور تم اپنے وجود کے ہر ذرّے پر ہمیشہ فخر محسوس کرو۔
+
+دونوں جہانوں کی کامیابیاں، خوشیاں اور سکون تمہیں عطا ہوں، اور تمہاری یادداشت کے 
+ کسی کونے میں ہمیشہ میرا نام بھی قائم رہے۔
+آمین
+
+!تمہاری دوستی، خلوص، اور مجھے سمجھنے اور کبھی نہ چھوڑ کر جانے کے لیے بہت شکریہ!
+
+        🎂✨ Happy Birthday Once Again! ✨🎂
+
+        <br><br>
+        With Love,<br>
+        [Laraib Shahid]
+    </div>
+</div>
+
+<audio id="music" loop>
+<source src="YOUR-MUSIC-LINK.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+
+function start(){
+    document.getElementById('welcome').classList.add('hidden');
+    document.getElementById('main').classList.remove('hidden');
+
+    typeWriter();
+
+    document.getElementById('music').play().catch(()=>{});
+}
+
+let text =
+"You know what I love about you the most? Your originality! Fake nahi ho tum, hnn bewafaa, mannerless, aur 2 no. zaroor ho aur woh toh hamesha rho gi.. And I actually love that :).. Hnn bss thorii zyadaa bewafaiii qaabil-e-bardasht nahi hoti, uss k liye tm bhaar mn hi achii ho! Hr maheenay baad badal jaati ho, but ek cheez jisska mujhe yaqeen hai k nahi badlay gi, woh hai hmari dostiii!! and yes I love you for that! Khushhh rho hameshaaa, aabaad rho!! .";
+
+let i=0;
+
+function typeWriter(){
+    if(i<text.length){
+        document.getElementById('typewriter').innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typeWriter,50);
+    }
+}
+
+function blow(candle){
+    let flame=candle.querySelector('.flame');
+    if(flame){
+        flame.remove();
+    }
+}
+
+function showFinal(){
+
+    let flames=document.querySelectorAll('.flame');
+
+    if(flames.length>0){
+        alert("Blow out all candles first! 🎂");
+        return;
+    }
+
+    document.getElementById('main').classList.add('hidden');
+    document.getElementById('final').classList.remove('hidden');
+}
+
+</script>
+
+</body>
+</html>
