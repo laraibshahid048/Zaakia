@@ -29,23 +29,15 @@ body{
 
 h1{color:#b30059}
 
-/* countdown */
-#countdown{
-    font-size:60px;
+/* BIG COUNTDOWN */
+#bigCount{
+    font-size:120px;
+    font-weight:600;
     color:#b30059;
+    transition: all 0.3s ease;
 }
 
-/* buttons */
-button{
-    background:#ff69b4;
-    border:none;
-    padding:12px 25px;
-    border-radius:30px;
-    color:white;
-    font-size:18px;
-}
-
-/* cinematic */
+/* CINEMA */
 #cinema{
     position:fixed;
     inset:0;
@@ -59,9 +51,7 @@ button{
 }
 
 /* bouquet */
-.bouquet{
-    font-size:70px;
-}
+.bouquet{font-size:70px}
 
 /* photo */
 .photo-frame{
@@ -97,6 +87,15 @@ button{
     color:#7a003c;
 }
 
+button{
+    background:#ff69b4;
+    border:none;
+    padding:12px 25px;
+    border-radius:30px;
+    color:white;
+    font-size:18px;
+}
+
 </style>
 </head>
 
@@ -105,10 +104,9 @@ button{
 <!-- CINEMA -->
 <div id="cinema">It's your day, Zaakia 💖</div>
 
-<!-- COUNTDOWN -->
+<!-- 5-4-3-2-1 COUNTDOWN -->
 <div id="countScreen" class="screen">
-    <h1>Countdown</h1>
-    <div id="countdown">Loading...</div>
+    <div id="bigCount">5</div>
 </div>
 
 <!-- BOUQUET -->
@@ -134,7 +132,7 @@ button{
 <div id="envScreen" class="screen hidden">
 
     <div class="envelope" onclick="revealLetter()"></div>
-    <h3>Tap envelope</h3>
+    <h3>Tap envelope 💌</h3>
 
 </div>
 
@@ -143,7 +141,7 @@ button{
 
 <div class="final">
 
-Dearest Ms Zaakia Sultan Butt 💖<br><br>
+Dearest Ms Zaakia Sultan Butt💖<br><br>
 
 To the most beautiful soul I call my "achii dost"! May all the happiness of this world find you even in the darkest of storms, and Allah's mercy be with you whatever situation you may be in!
 
@@ -175,37 +173,37 @@ You are rare, unforgettable, and deeply valued!💖<br><br>
 
 <script>
 
-const target = new Date("June 16, 2026 00:00:00").getTime();
+/* 5-4-3-2-1 COUNTDOWN */
+let count = 5;
+let big = document.getElementById("bigCount");
 
-/* FLOW CONTROL (FIXED) */
-let x = setInterval(()=>{
+let timer = setInterval(()=>{
 
-    let now = new Date().getTime();
-    let diff = target - now;
+    count--;
+    big.innerText = count + 1;
 
-    if(diff <= 0){
-        clearInterval(x);
+    if(count < 0){
+
+        clearInterval(timer);
 
         document.getElementById("countScreen").classList.add("hidden");
 
+        /* CINEMATIC SCREEN */
         document.getElementById("cinema").style.display="flex";
 
         setTimeout(()=>{
+
             document.getElementById("cinema").style.display="none";
             document.getElementById("welcome").classList.remove("hidden");
 
             setTimeout(()=>{
+
                 document.getElementById("welcome").classList.add("hidden");
                 document.getElementById("main").classList.remove("hidden");
+
             },2500);
 
         },2500);
-
-    } else {
-        let days = Math.floor(diff/(1000*60*60*24));
-        let hours = Math.floor((diff/(1000*60*60))%24);
-        document.getElementById("countdown").innerHTML =
-        days + " days " + hours + " hrs left";
     }
 
 },1000);
