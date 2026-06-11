@@ -3,107 +3,155 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Day is Yours!</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<title>For Zaakia ♡</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
 
 <style>
 
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
 body{
-    margin:0;
-    font-family:Poppins;
-    background: linear-gradient(135deg,#fff8f5,#ffeef2,#fdf2f8);
-    overflow:hidden;
+background:#F8F4EF;
+color:#5f4a42;
+font-family:'Poppins',sans-serif;
+overflow-x:hidden;
 }
 
-/* screens */
-.screen{
-    height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    flex-direction:column;
-    text-align:center;
+/* floating sparkles */
+
+.sparkle{
+position:fixed;
+font-size:18px;
+pointer-events:none;
+animation:float 8s linear infinite;
+opacity:.6;
 }
 
-.hidden{display:none;}
-
-/* headings */
-h1{
-    color:#b30059;
+@keyframes float{
+from{
+transform:translateY(100vh);
+}
+to{
+transform:translateY(-120vh);
+opacity:0;
+}
 }
 
-/* bouquet */
-.bouquet{
-    font-size:75px;
-    animation:pop 1.2s infinite alternate;
-}
-@keyframes pop{
-    from{transform:scale(1);}
-    to{transform:scale(1.1);}
+/* hero */
+
+.hero{
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:40px;
 }
 
-/* button */
-button{
-    background:#ff69b4;
-    border:none;
-    padding:12px 25px;
-    border-radius:30px;
-    color:white;
-    font-size:18px;
-    cursor:pointer;
+.hero h1{
+font-size:4rem;
+line-height:1.2;
+font-weight:300;
 }
 
-/* floating flowers */
-.float{
-    position:fixed;
-    font-size:20px;
-    animation: floatUp linear forwards;
-    opacity:0.7;
+/* scrapbook section */
+
+.section{
+padding:100px 20px;
+max-width:1000px;
+margin:auto;
 }
 
-@keyframes floatUp{
-    from{transform:translateY(100vh);}
-    to{transform:translateY(-10vh); opacity:0;}
+/* polaroid */
+
+.polaroid{
+background:white;
+padding:15px 15px 60px;
+width:320px;
+margin:auto;
+box-shadow:0 15px 30px rgba(0,0,0,.12);
+transform:rotate(-3deg);
 }
 
-/* image */
-.photo-frame{
-    width:280px;
-    height:280px;
-    border-radius:20px;
-    overflow:hidden;
-    box-shadow:0 20px 40px rgba(0,0,0,0.15);
-    margin-top:20px;
+.polaroid img{
+width:100%;
+display:block;
 }
 
-.photo-frame img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
+.caption{
+margin-top:15px;
+font-family:'Caveat',cursive;
+font-size:32px;
 }
 
-/* envelope */
-.envelope{
-    width:220px;
-    height:140px;
-    background:#ff69b4;
-    border-radius:10px;
-    cursor:pointer;
-    position:relative;
+/* notes */
+
+.notes{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
+margin-top:40px;
 }
 
-/* final letter */
-.final{
-    font-family:"Times New Roman",serif;
-    background:rgba(255,255,255,0.7);
-    padding:25px;
-    max-width:800px;
-    max-height:80vh;
-    overflow-y:auto;
-    border-radius:20px;
-    color:#7a003c;
-    line-height:1.8;
+.note{
+background:#fffaf7;
+padding:25px;
+border-radius:15px;
+box-shadow:0 10px 25px rgba(0,0,0,.08);
+font-family:'Caveat',cursive;
+font-size:30px;
+}
+
+/* letter */
+
+.letter{
+background:white;
+padding:40px;
+border-radius:25px;
+box-shadow:0 15px 35px rgba(0,0,0,.08);
+font-family:"Times New Roman",serif;
+line-height:2;
+font-size:20px;
+}
+
+/* final card */
+
+.final-card{
+text-align:center;
+padding:120px 20px;
+}
+
+.final-card h2{
+font-size:4rem;
+margin-bottom:20px;
+}
+
+.final-card p{
+font-size:22px;
+}
+
+.signature{
+font-family:'Caveat',cursive;
+font-size:50px;
+margin-top:40px;
+}
+
+@media(max-width:768px){
+
+.hero h1{
+font-size:2.5rem;
+}
+
+.final-card h2{
+font-size:2.7rem;
+}
+
 }
 
 </style>
@@ -111,60 +159,85 @@ button{
 
 <body>
 
-<!-- FLOWERS -->
 <script>
-function flowers(){
-    let items=["🌸","🌷","💮","✨","💖"];
 
-    setInterval(()=>{
-        let f=document.createElement("div");
-        f.className="float";
-        f.innerHTML=items[Math.floor(Math.random()*items.length)];
-        f.style.left=Math.random()*100+"vw";
-        f.style.fontSize=(15+Math.random()*20)+"px";
-        f.style.animationDuration=(3+Math.random()*3)+"s";
-        document.body.appendChild(f);
+const icons=["✨","🌸","💖","🌷"];
 
-        setTimeout(()=>f.remove(),5000);
-    },400);
-}
-flowers();
+setInterval(()=>{
+
+let s=document.createElement("div");
+
+s.className="sparkle";
+
+s.innerHTML=icons[Math.floor(Math.random()*icons.length)];
+
+s.style.left=Math.random()*100+"vw";
+
+document.body.appendChild(s);
+
+setTimeout(()=>{
+s.remove();
+},8000);
+
+},500);
+
 </script>
 
-<!-- BOUQUET SCREEN -->
-<div id="welcome" class="screen">
-    <div class="bouquet">💐</div>
-    <h1>A little wish, in a different way :)</h1>
-    <button onclick="start()">Open💖</button>
+<section class="hero">
+
+<h1>
+
+for someone<br>
+who accidentally became<br>
+one of my favorite people ♡
+
+</h1>
+
+</section>
+
+<section class="section">
+
+<div class="polaroid">
+
+<!-- ADD IMAGE HERE -->
+
+<img src="YOUR_IMAGE_HERE.jpg">
+
+<div class="caption">
+a memory worth framing ✨
 </div>
 
-<!-- MAIN -->
-<div id="main" class="screen hidden">
+</div>
 
-    <h1>Happyyyy Birthdayyyy Zaakiaaaaa 💖</h1>
+</section>
 
-    <div class="photo-frame">
-        <img src="https://drive.google.com/thumbnail?id=1P2xT90j9eTjT7Cc0OmwGJNorYHNXim4H&sz=w1000">
-    </div>
+<section class="section">
 
-    <button onclick="openLetter()">Open some khushfehmiyaan for YOU💌</button>
+<div class="notes">
+
+<div class="note">
+you are loved ♡
+</div>
+
+<div class="note">
+you matter more than you know
+</div>
+
+<div class="note">
+thank you for existing ✨
+</div>
 
 </div>
 
-<!-- ENVELOPE -->
-<div id="env" class="screen hidden">
+</section>
 
-    <div class="envelope" onclick="showFinal()"></div>
-    <h3>Tap the envelope 💌</h3>
+<section class="section">
 
-</div>
+<div class="letter">
 
-<!-- FINAL -->
-<div id="final" class="screen hidden">
+<h2>Dear Zaakia ♡</h2>
 
-<div class="final">
-
-Dearest Ms Zaakia Sultan Butt💖<br><br>
+<br>
 
 To the most beautiful soul I call my "achii dost"! May all the happiness of this world find you even in the darkest of storms, and Allah's mercy be with you whatever situation you may be in!
 
@@ -184,39 +257,28 @@ You know what I love about you the most? Your originality!
     and yes I love you for that! And I feel blessed to have a friend like you :)!!
     Khushhh rho hameshaaa, aabaad rho!!<br><br>
 
-You are rare, unforgettable, and deeply valued!💖<br><br>
-
--With Love, always💕
-   
-    Laraib Shahid<br>
-
-Happy Birthday once again!🎂🎉<br><br>
-
-
+You are rare, unforgettable, and deeply valued!💖
 
 </div>
 
+</section>
+
+<section class="final-card">
+
+<h2>Happy Birthday ♡</h2>
+
+<p>
+Ms Zaakia Sultan Butt
+</p>
+
+<div class="signature">
+
+With Love,<br>
+Laraib
+
 </div>
 
-<script>
-
-/* FLOW CONTROL */
-function start(){
-    document.getElementById("welcome").classList.add("hidden");
-    document.getElementById("main").classList.remove("hidden");
-}
-
-function openLetter(){
-    document.getElementById("main").classList.add("hidden");
-    document.getElementById("env").classList.remove("hidden");
-}
-
-function showFinal(){
-    document.getElementById("env").classList.add("hidden");
-    document.getElementById("final").classList.remove("hidden");
-}
-
-</script>
+</section>
 
 </body>
 </html>
